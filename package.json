@@ -1,0 +1,98 @@
+{
+  "name": "@abcaustralia/postcss-to-camel-case",
+  "version": "0.0.0",
+  "description": "PostCSS plugin to migrate CSS selector names to camelCase",
+  "engines": {
+    "node": ">=14"
+  },
+  "keywords": [
+    "css",
+    "camel case",
+    "postcss",
+    "postcss-plugin"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "test": "npm run test:jest && npm run test:lint && npm run test:check-dts && npm run test:size-limit",
+    "test:jest": "jest --coverage",
+    "test:lint": "eslint .",
+    "test:size-limit": "size-limit",
+    "test:watch": "npm run test:jest -- --watchAll"
+  },
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "files": [
+    "lib"
+  ],
+  "author": "Luke Clark <clark.luke@abc.net.au>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/abcdigital/postcss-to-camel-case.git"
+  },
+  "peerDependencies": {
+    "postcss": "^8.3.6"
+  },
+  "devDependencies": {
+    "@logux/eslint-config": "^45.4.7",
+    "@size-limit/preset-small-lib": "^5.0.2",
+    "@types/dedent": "^0.7.0",
+    "@types/jest": "^26.0.24",
+    "@typescript-eslint/eslint-plugin": "^4.29.1",
+    "@typescript-eslint/parser": "^4.29.1",
+    "dedent": "^0.7.0",
+    "eslint": "^7.32.0",
+    "eslint-config-standard": "^16.0.3",
+    "eslint-plugin-import": "^2.24.0",
+    "eslint-plugin-jest": "^24.4.0",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-prefer-let": "^1.1.0",
+    "eslint-plugin-promise": "^5.1.0",
+    "eslint-plugin-security": "^1.4.0",
+    "eslint-plugin-unicorn": "^35.0.0",
+    "jest": "^27.0.6",
+    "lint-staged": "^11.1.2",
+    "postcss": "^8.3.6",
+    "prettier": "^2.3.2",
+    "simple-git-hooks": "^2.5.1",
+    "size-limit": "^5.0.2",
+    "ts-jest": "^27.0.4",
+    "typescript": "^4.3.5"
+  },
+  "lint-staged": {
+    "*.ts": [
+      "prettier --write",
+      "eslint --fix"
+    ],
+    "*.{json,md}": [
+      "prettier --write"
+    ]
+  },
+  "simple-git-hooks": {
+    "pre-commit": "npx lint-staged"
+  },
+  "size-limit": [
+    {
+      "limit": "15 KB"
+    }
+  ],
+  "eslintConfig": {
+    "extends": "@logux/eslint-config/ts",
+    "ignorePatterns": [
+      "lib",
+      "test"
+    ]
+  },
+  "jest": {
+    "preset": "ts-jest",
+    "testEnvironment": "node",
+    "coverageThreshold": {
+      "global": {
+        "lines": 100
+      }
+    }
+  },
+  "dependencies": {
+    "postcss-selector-parser": "^6.0.6"
+  }
+}
